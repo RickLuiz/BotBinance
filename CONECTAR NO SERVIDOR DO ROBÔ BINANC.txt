@@ -1,0 +1,61 @@
+CONECTAR NO SERVIDOR DO ROBÔ BINANCE (Terminal Power Shell):
+
+ssh -i "C:/Users/hcapristano/Documents/MB/botbinance.pem" ubuntu@18.231.47.44
+
+-----------------------------------------------------------------------------------------------------------------
+TRANSFERIR APLICAÇÃO (Terminal Power Shell):
+
+scp -i "C:/Users/hcapristano/Documents/MB/botbinance.pem" -r "C:/Users/hcapristano/Documents/MB/" ubuntu@18.231.47.44:/home/ubuntu/
+
+----------------------------------------------------------------------------------------------------------------
+ATUALIZAR PACOTES LINUX:
+
+sudo apt update
+----------------------------------------------------------------------------------------------------------------
+INSTALAR AMBIENTE VIRTUAL(Linux):
+
+sudo apt install python3-venv
+----------------------------------------------------------------------------------------------------------------
+CRIAR AMBIENTE VIRTUAL (Linux):
+
+cd /home/ubuntu/MB
+python3 -m venv myenv
+----------------------------------------------------------------------------------------------------------------
+ATIVAR AMBIENTE VIRTUAL:
+
+source myenv/bin/activate
+-----------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------
+INSTALAR AS DEPENDÊNCIAS (Linux):
+
+pip3 install numpy python-binance python-dotenv google-auth google-auth-oauthlib google-auth-httplib2 google-api-python-client
+---------------------------------------------------------------------------------------------------------------
+ABRIR PASTA DA APLICAÇÃO - ROBÔ (Linux):
+
+cd /home/ubuntu/MB
+-----------------------------------------------------------------------------------------------------------------
+EXECUTAR ROBÔ:
+
+python3 botbinance-hour.py
+
+EXECUTAR EM SEGUNDO PLANO:
+
+cd /home/ubuntu/MB
+source myenv/bin/activate
+nohup python botbinance-hour.py > output.log 2>&1 &
+
+----------------------------------------------------------------------------------------------------------------
+ENCERRAR ROBÔ:
+
+Crt + C
+----------------------------------------------------------------------------------------------------------------
+ENCERRAR ROBÔ EM SEGUNDO PLANO:
+
+	ENCONTRAR O PID: ps aux | grep python
+	ENCERRAR: kill <PID>
+	FORÇAR ENCERRAMENTO: kill -9 <PID>
+-----------------------------------------------------------------------------------------------------------------
+DESATIVAR AMBIENTE VIRTUAL:
+
+deactivate
+
